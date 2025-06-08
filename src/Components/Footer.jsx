@@ -1,5 +1,14 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { motion } from 'framer-motion';
+import ChatPopup from './togglePopup';
+
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6 },
+  viewport: { once: true, amount: 0.2 },
+};
 
 const Footer = () => {
   return (
@@ -7,9 +16,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-
+          
           {/* Company Info */}
-          <div>
+          <motion.div {...fadeUp}>
             <h3 className="text-xl font-bold mb-4">Dass Computers</h3>
             <p className="text-sm text-white/90 leading-relaxed mb-4">
               Dass Computers is a trusted provider of reliable laptop and desktop solutions. Based in Katpadi, near Aazhlaiyam College, we’ve proudly served the tech needs of our community for over 15 years.
@@ -29,10 +38,10 @@ const Footer = () => {
                 <Youtube size={20} />
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Info Links */}
-          <div>
+          <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.2 }}>
             <h3 className="text-xl font-bold mb-4">Information</h3>
             <ul className="space-y-2 text-sm text-white/90">
               <li><a href="#" className="hover:underline">About Us</a></li>
@@ -40,24 +49,32 @@ const Footer = () => {
               <li><a href="#" className="hover:underline">Our Branches</a></li>
               <li><a href="#" className="hover:underline">Contact Us</a></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Product Links */}
-          <div>
+          <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.4 }}>
             <h3 className="text-xl font-bold mb-4">Products</h3>
             <ul className="space-y-2 text-sm text-white/90">
               <li><a href="#" className="hover:underline">Laptops</a></li>
               <li><a href="#" className="hover:underline">Desktops</a></li>
               <li><a href="#" className="hover:underline">Accessories</a></li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-10 border-t border-white/20 pt-4 text-center text-sm text-white/80">
+        <motion.div
+          className="mt-10 border-t border-white/20 pt-4 text-center text-sm text-white/80"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          viewport={{ once: true }}
+        >
           © {new Date().getFullYear()} Dass Computers. All rights reserved.
-        </div>
+        </motion.div>
       </div>
+
+      <ChatPopup />
     </footer>
   );
 };
