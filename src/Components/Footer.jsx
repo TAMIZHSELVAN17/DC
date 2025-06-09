@@ -1,6 +1,7 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ChatPopup from './togglePopup';
 
 const fadeUp = {
@@ -25,29 +26,22 @@ const Footer = () => {
             </p>
             {/* Social Icons */}
             <div className="flex space-x-4 mt-3">
-              <a href="#" className="hover:text-blue-400 transition">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="hover:text-pink-400 transition">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="hover:text-sky-400 transition">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="hover:text-red-500 transition">
-                <Youtube size={20} />
-              </a>
+              <a href="#" className="hover:text-blue-400 transition"><Facebook size={20} /></a>
+              <a href="#" className="hover:text-pink-400 transition"><Instagram size={20} /></a>
+              <a href="#" className="hover:text-sky-400 transition"><Twitter size={20} /></a>
+              <a href="#" className="hover:text-red-500 transition"><Youtube size={20} /></a>
             </div>
           </motion.div>
 
-          {/* Info Links */}
+          {/* Info Links (Updated Section) */}
           <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.2 }}>
             <h3 className="text-xl font-bold mb-4">Information</h3>
             <ul className="space-y-2 text-sm text-white/90">
-              <li><a href="#" className="hover:underline">About Us</a></li>
-              <li><a href="#" className="hover:underline">Shop</a></li>
-              <li><a href="#" className="hover:underline">Our Branches</a></li>
-              <li><a href="#" className="hover:underline">Contact Us</a></li>
+              <li><Link to="/" className="hover:underline">Home</Link></li>
+              <li><Link to="/showroom" className="hover:underline">Showroom</Link></li>
+              <li><Link to="/accessories" className="hover:underline">Accessories</Link></li>
+              <li><Link to="/about" className="hover:underline">About Us</Link></li>
+              <li><Link to="/contact" className="hover:underline">Contact Us</Link></li>
             </ul>
           </motion.div>
 
@@ -55,9 +49,9 @@ const Footer = () => {
           <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.4 }}>
             <h3 className="text-xl font-bold mb-4">Products</h3>
             <ul className="space-y-2 text-sm text-white/90">
-              <li><a href="#" className="hover:underline">Laptops</a></li>
-              <li><a href="#" className="hover:underline">Desktops</a></li>
-              <li><a href="#" className="hover:underline">Accessories</a></li>
+              <li><Link to="/accessories">Laptops</Link></li>
+              <li><Link to="/accessories" >Desktops</Link></li>
+              <li><Link to="/accessories" >Accessories</Link></li>
             </ul>
           </motion.div>
         </div>
@@ -74,6 +68,7 @@ const Footer = () => {
         </motion.div>
       </div>
 
+      {/* Chat Popup */}
       <ChatPopup />
     </footer>
   );
