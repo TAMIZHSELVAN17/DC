@@ -64,7 +64,7 @@ const ChatPopup = () => {
           >
             <div className="bg-white bg-opacity-90 backdrop-blur-sm p-4 rounded-md shadow-sm max-w-[85%]">
               <p className="text-xs font-semibold text-gray-800 mb-1">Dass Computer</p>
-              <p className="text-sm text-gray-700">Hi 👋, how can I help you today?</p>
+              <p className="text-sm text-gray-700">Hi 👋,<br /> how can I help you today?</p>
               <p className="text-[10px] text-right text-gray-400 mt-2">Now</p>
             </div>
           </div>
