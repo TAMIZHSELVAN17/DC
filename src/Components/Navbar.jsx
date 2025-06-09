@@ -21,7 +21,7 @@ const Navbar = () => {
     hidden: { opacity: 0, x: 50 },
     visible: (i) => ({
       opacity: 1,
-      y: 0,
+      x: 0, // Changed from y: 0 to x: 0 for horizontal slide-in effect
       transition: { delay: i * 0.1, duration: 0.4 },
     }),
   };
@@ -29,12 +29,12 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-blue-600 shadow-md select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Left spacer to center menu */}
-          <div className="w-10 md:w-32" />
+        <div className="flex items-center justify-between h-16">
+          {/* Logo or Brand (Optional, added for balance) */}
+          
 
-          {/* Centered Menu (Desktop) with motion */}
-          <div className="hidden md:flex space-x-8 justify-center w-full">
+          {/* Centered Menu (Desktop) */}
+          <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
             {navLinks.map((item, i) => (
               <motion.div
                 key={item.path}
@@ -45,7 +45,7 @@ const Navbar = () => {
               >
                 <Link
                   to={item.path}
-                  className={`font-medium px-2 py-1 rounded-md outline-none focus:text-yellow-300 ${
+                  className={`font-medium px-2 py-1 rounded-md outline-none focus:text-yellow-300 hover:text-yellow-300 transition-colors ${
                     isActive(item.path)
                       ? 'text-yellow-300 border-b-2 border-yellow-300'
                       : 'text-white'
@@ -58,10 +58,11 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded"
+              className="text-white focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded p-1"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -69,7 +70,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu with Framer Motion */}
+      {/* Mobile Dropdown Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -77,6 +78,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
             className="md:hidden bg-blue-600 px-4 pb-4 space-y-2"
           >
             {navLinks.map((item) => (
@@ -84,7 +86,7 @@ const Navbar = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className={`block font-medium px-2 py-1 rounded-md focus:outline-none focus:text-yellow-300 ${
+                className={`block font-medium px-2 py-1 rounded-md focus:outline-none focus:text-yellow-300 hover:text-yellow-300 transition-colors ${
                   isActive(item.path) ? 'text-yellow-300' : 'text-white'
                 }`}
               >

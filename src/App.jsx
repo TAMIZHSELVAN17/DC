@@ -16,8 +16,9 @@ import Footer from './Components/Footer';
 const Layout = () => {
   return (
     <div className="w-full overflow-x-hidden">
-      <SearchHeader />
+      
       <Navbar />
+      <SearchHeader />
       <main>
         <Outlet />
       </main>
